@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Liên hệ - Trái Cây Đà Lạt</title>
+
+    <!-- Tái sử dụng một phần style từ bai5 -->
+    <link
+      rel="stylesheet"
+      id="bootstrap-css"
+      href="./bai5_files/stylesheet_10.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      id="farmart-css"
+      href="./bai5_files/stylesheet_7.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      id="custom-css"
+      href="./bai5_files/custom.css"
+      type="text/css"
+    />
+
+    <style>
+      body {
+        font-family: "Montserrat", Arial, sans-serif;
+        color: #115489;
+        margin: 0;
+        background: #f7fafc;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #26c4fc;
+      }
+
+      header {
+        background: #115489;
+        color: #fff;
+      }
+
+      .header-main,
+      .header-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .site-branding-title {
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .site-branding-sub {
+        font-size: 13px;
+        opacity: 0.9;
+      }
+
+      .main-nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+        font-weight: 500;
+      }
+
+      .main-nav a {
+        position: relative;
+        padding-bottom: 4px;
+      }
+
+      .main-nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: #26c4fc;
+        transition: width 0.2s ease;
+      }
+
+      .main-nav a:hover::after,
+      .main-nav a.active::after {
+        width: 100%;
+      }
+
+      .header-phone {
+        font-weight: 600;
+        font-size: 14px;
+        text-align: right;
+      }
+
+      .header-phone span {
+        display: block;
+        font-weight: 400;
+        font-size: 12px;
+        opacity: 0.9;
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 40px auto 60px;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 40px;
+      }
+
+      .contact-info-card,
+      .contact-form-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(17, 84, 137, 0.08);
+        padding: 28px 28px 26px;
+      }
+
+      /* Đảo thứ tự giữa thông tin & form trên mobile để khác với bố cục thông thường */
+      .contact-info-card {
+        order: 2;
+      }
+
+      .contact-form-card {
+        order: 1;
+      }
+
+      @media (min-width: 768px) {
+        .contact-info-card {
+          order: 1;
+        }
+
+        .contact-form-card {
+          order: 2;
+        }
+      }
+
+      .section-label {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 11px;
+        font-weight: 600;
+        color: #26c4fc;
+        margin-bottom: 8px;
+      }
+
+      .contact-title {
+        font-size: 26px;
+        margin: 0 0 8px;
+        color: #115489;
+      }
+
+      .contact-subtitle {
+        font-size: 13px;
+        color: #4a6686;
+        margin-bottom: 20px;
+      }
+
+      .info-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 14px;
+      }
+
+      .info-item-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #7b8ba3;
+        margin-bottom: 3px;
+      }
+
+      .info-item-value {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .info-item-note {
+        font-size: 12px;
+        color: #7b8ba3;
+        margin-top: 3px;
+      }
+
+      .contact-form {
+        display: grid;
+        gap: 14px;
+      }
+
+      .form-row {
+        display: grid;
+        gap: 12px;
+      }
+
+      @media (min-width: 768px) {
+        .form-row--two {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #244c73;
+        margin-bottom: 4px;
+        display: inline-block;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      textarea {
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid #c4d3e6;
+        padding: 8px 10px;
+        font-size: 13px;
+        font-family: inherit;
+        box-sizing: border-box;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="tel"]:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #26c4fc;
+        box-shadow: 0 0 0 1px rgba(38, 196, 252, 0.25);
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #26c4fc, #115489);
+        color: #fff;
+        font-weight: 600;
+        padding: 9px 24px;
+        border: none;
+        cursor: pointer;
+        font-size: 13px;
+        box-shadow: 0 10px 20px rgba(17, 84, 137, 0.25);
+        gap: 6px;
+      }
+
+      .btn-primary:hover {
+        filter: brightness(1.05);
+      }
+
+      .btn-primary span.arrow {
+        font-size: 15px;
+      }
+
+      .helper-text {
+        font-size: 11px;
+        color: #7b8ba3;
+        margin-top: 6px;
+      }
+
+      .map-card {
+        margin-top: 18px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px dashed rgba(17, 84, 137, 0.3);
+        font-size: 12px;
+        color: #4a6686;
+        background: linear-gradient(
+          135deg,
+          rgba(38, 196, 252, 0.08),
+          rgba(17, 84, 137, 0.04)
+        );
+      }
+
+      footer {
+        border-top: 1px solid #d8e2f0;
+        padding: 18px 0 24px;
+        background: #ffffff;
+      }
+
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        font-size: 12px;
+        color: #4a6686;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .footer-links a {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-main">
+        <div>
+          <div class="site-branding-title">Trái Cây Đà Lạt</div>
+          <div class="site-branding-sub">
+            Trái cây tươi ngon từ cao nguyên
+          </div>
+        </div>
+        <div class="header-phone">
+          0901-778-775
+          <span>Tư vấn &amp; Hỗ trợ</span>
+        </div>
+      </div>
+
+      <div class="header-bottom">
+        <nav class="main-nav">
+          <ul>
+            <li>
+              <a href="./bai5.html">Câu chuyện Trái Cây Đà Lạt</a>
+            </li>
+            <li>
+              <a href="./bai5.html">Cửa hàng</a>
+            </li>
+            <li>
+              <a href="./bai5.html">Khuyến mãi</a>
+            </li>
+            <li>
+              <a href="./bai5.html">Tin tức</a>
+            </li>
+            <li>
+              <a href="./lienhe.html" class="active">Liên hệ</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Khối 1: Form liên hệ (cố ý đưa lên trước trên mobile để đảo vị trí so với info) -->
+      <section class="contact-form-card">
+        <div class="section-label">Gửi lời nhắn cho chúng tôi</div>
+        <h1 class="contact-title">Liên hệ Trái Cây Đà Lạt</h1>
+        <p class="contact-subtitle">
+          Nếu bạn có bất kỳ câu hỏi, yêu cầu báo giá, hay góp ý về sản phẩm, vui
+          lòng để lại thông tin bên dưới. Chúng tôi sẽ phản hồi trong thời gian
+          sớm nhất.
+        </p>
+
+        <form class="contact-form">
+          <div class="form-row form-row--two">
+            <div>
+              <label for="name">Họ và tên</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Nguyễn Văn A"
+              />
+            </div>
+            <div>
+              <label for="phone">Số điện thoại</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="0901 778 775"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="lienhe@suadalat.com"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="message">Nội dung</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Bạn muốn hỏi thêm điều gì về sản phẩm, giao hàng hoặc hợp tác?"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <button type="submit" class="btn-primary">
+              Gửi liên hệ
+              <span class="arrow">→</span>
+            </button>
+            <div class="helper-text">
+              * Đây là form giao diện mẫu, chưa kết nối gửi email thực tế.
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Khối 2: Thông tin liên hệ / địa chỉ (đảo vị trí so với khối form trên mobile) -->
+      <section class="contact-info-card">
+        <div class="section-label">Thông tin liên hệ</div>
+        <h2 class="contact-title">Kết nối với Trái Cây Đà Lạt</h2>
+        <p class="contact-subtitle">
+          Bạn có thể liên hệ trực tiếp qua hotline, email hoặc đến cửa hàng/
+          văn phòng của chúng tôi.
+        </p>
+
+        <ul class="info-list">
+          <li>
+            <div class="info-item-label">Hotline</div>
+            <div class="info-item-value">0901-778-775</div>
+            <div class="info-item-note">
+              Tư vấn &amp; hỗ trợ từ 8:00 – 21:00 (kể cả cuối tuần).
+            </div>
+          </li>
+          <li>
+            <div class="info-item-label">Email</div>
+            <div class="info-item-value">lienhe@suadalat.com</div>
+            <div class="info-item-note">
+              Gửi yêu cầu báo giá, hợp tác hoặc góp ý chất lượng dịch vụ.
+            </div>
+          </li>
+          <li>
+            <div class="info-item-label">Văn phòng</div>
+            <div class="info-item-value">
+              5 Phan Xích Long, Phường 5, Quận Phú Nhuận, TP. Hồ Chí Minh
+            </div>
+            <div class="info-item-note">
+              Vui lòng liên hệ trước khi ghé để chúng tôi chuẩn bị tiếp đón.
+            </div>
+          </li>
+        </ul>
+
+        <div class="map-card">
+          <strong>Bản đồ &amp; giao hàng:</strong><br />
+          Hiện tại, chúng tôi hỗ trợ giao hàng tại TP. Hồ Chí Minh và một số
+          khu vực lân cận. Nếu bạn ở tỉnh/thành khác, vui lòng liên hệ trước để
+          được tư vấn phương thức vận chuyển phù hợp.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          © 2024 Trái Cây Đà Lạt. Tất cả quyền được bảo lưu.
+        </div>
+        <div class="footer-links">
+          <a href="./bai5.html">Trang chủ</a>
+          <a href="./bai5.html">Cửa hàng</a>
+          <a href="./bai5.html">Khuyến mãi</a>
+          <a href="./lienhe.html">Liên hệ</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+
